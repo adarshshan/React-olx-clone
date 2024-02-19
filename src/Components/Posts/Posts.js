@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Heart from '../../assets/Heart';
 import './Post.css';
 import { db, auth } from '../../Firebase/config';
 import { collection, getDoc, getDocs, query } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { PostContext } from '../../store/postContext';
 
 function Posts() {
   const [products, setProducts] = useState([]);
+  const { setDetails } = useContext(PostContext);
+  const navigate = useNavigate();
 
   useEffect(async () => {
     const Mycollection = collection(db, 'products');
     const querysnapShot = await getDocs(Mycollection);
     if (querysnapShot) {
-      const allPost = await querysnapShot.docs.map((doc) => ({
+      const allPost = querysnapShot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id
       }))
@@ -34,7 +38,10 @@ function Posts() {
           {
             products.map((product) => {
               return (
-                <div className="card">
+                <div key={product.id} onClick={() => {
+                  setDetails(product);
+                  navigate('/view');
+                }} className="card">
                   <div className="favorite">
                     <Heart />
                   </div>
