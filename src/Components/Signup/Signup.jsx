@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -27,7 +27,7 @@ export default function Signup() {
       let updated = await addDoc(collection(db, "users"), {
         id: userCredential.user.uid,
         username: username,
-        phone: password,
+        password: password,
         email: email,
         phone: phone
       })

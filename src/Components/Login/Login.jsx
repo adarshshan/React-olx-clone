@@ -27,7 +27,7 @@ function Login() {
 
   return (
     <div>
-      <div className="loginParentDiv">
+      <div className="loginParentDiv shadow">
         <img width="200px" height="200px" src={Logo}></img>
         <form onSubmit={handleLogin}>
           <label htmlFor="fname">Email</label>

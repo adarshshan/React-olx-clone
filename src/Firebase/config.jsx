@@ -4,7 +4,6 @@ import 'firebase/auth';
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth'
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyCBtjbr_4ZKE77HkuppwaH5hg9C6nSk_AQ",
     authDomain: "my-olx-clone-dc9b8.firebaseapp.com",
@@ -16,7 +15,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 export default initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);

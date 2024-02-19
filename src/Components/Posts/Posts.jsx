@@ -12,17 +12,15 @@ function Posts() {
   const { setDetails } = useContext(PostContext);
   const navigate = useNavigate();
 
-  useEffect(async () => {
+  useEffect(() => {
     const Mycollection = collection(db, 'products');
-    const querysnapShot = await getDocs(Mycollection);
-    if (querysnapShot) {
+    getDocs(Mycollection).then((querysnapShot) => {
       const allPost = querysnapShot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id
       }))
       setProducts(allPost);
-    }
-
+    })
   }, [])
   console.log(products)
 

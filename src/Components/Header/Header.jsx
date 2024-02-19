@@ -28,9 +28,9 @@ function Header() {
           <Link to='/'><OlxLogo /></Link>
         </div>
         <div className="placeSearch">
-          <Search></Search>
+          <Search />
           <input type="text" />
-          <Arrow></Arrow>
+          <Arrow />
         </div>
         <div className="productSearch">
           <div className="input">
@@ -40,12 +40,12 @@ function Header() {
             />
           </div>
           <div className="searchAction">
-            <Search color="#fff"></Search>
+            <Search color="#fff" />
           </div>
         </div>
         <div className="language">
           <span> ENGLISH </span>
-          <Arrow></Arrow>
+          <Arrow />
         </div>
         <div className="loginPage">
           {!user ? (<Link to='/login' style={{ textDecoration: 'none', color: 'black' }}><span>Login</span></Link>) :
@@ -59,8 +59,8 @@ function Header() {
           <hr />
         </div>
 
-        <div className="sellMenu">
-          <Link to='/create'><SellButton /></Link>
+        <div onClick={() => navigate('/create')} className="sellMenu">
+          <SellButton />
           <div className="sellMenuContent">
             <SellButtonPlus />
             <span>SELL</span>
