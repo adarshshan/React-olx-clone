@@ -19,7 +19,7 @@ function View() {
       .catch((err) => {
         console.log(err);
       })
-  })
+  }, [])
   return (
     <div className="viewParentDiv">
       <div className="imageShowDiv">
@@ -35,11 +35,11 @@ function View() {
           <p>{details.category}</p>
           <span>{details.createdAt}</span>
         </div>
-        <div className="contactDetails">
+        {userDetails && <div className="contactDetails">
           <p>Seller details</p>
           <p>{userDetails.username}</p>
           <p>{userDetails.phone}</p>
-        </div>
+        </div>}
       </div>
     </div>
   );

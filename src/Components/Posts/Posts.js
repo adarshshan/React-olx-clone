@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import Heart from '../../assets/Heart';
 import './Post.css';
-import { db, auth } from '../../Firebase/config';
-import { collection, getDoc, getDocs, query } from 'firebase/firestore';
+import { db } from '../../Firebase/config';
+import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { PostContext } from '../../store/postContext';
 
@@ -27,13 +27,13 @@ function Posts() {
   console.log(products)
 
   return (
-    <div className="postParentDiv">
+    <div className="postParentDiv ">
       <div className="moreView">
         <div className="heading">
           <span>Quick Menu</span>
           <span>View more</span>
         </div>
-        <div className="cards">
+        <div className=" row ms-5">
 
           {
             products.map((product) => {
@@ -41,7 +41,7 @@ function Posts() {
                 <div key={product.id} onClick={() => {
                   setDetails(product);
                   navigate('/view');
-                }} className="card">
+                }} className="card col-md-4 col-lg-4 m-3 p-2 ms-3">
                   <div className="favorite">
                     <Heart />
                   </div>
@@ -68,8 +68,8 @@ function Posts() {
         <div className="heading">
           <span>Fresh recommendations</span>
         </div>
-        <div className="cards">
-          <div className="card">
+        <div className="cards container">
+          <div className="card row">
             <div className="favorite">
               <Heart></Heart>
             </div>
