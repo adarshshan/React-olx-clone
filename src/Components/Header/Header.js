@@ -16,7 +16,7 @@ function Header() {
   const { user } = useContext(AuthContext)
   const navigate = useNavigate();
 
-  const logOut=()=>{
+  const logOut = () => {
     signOut(auth);
     navigate('/login')
   }
@@ -25,7 +25,7 @@ function Header() {
     <div className="headerParentDiv">
       <div className="headerChildDiv">
         <div className="brandName">
-          <OlxLogo></OlxLogo>
+          <Link to='/'><OlxLogo /></Link>
         </div>
         <div className="placeSearch">
           <Search></Search>
@@ -40,7 +40,7 @@ function Header() {
             />
           </div>
           <div className="searchAction">
-            <Search color="#ffffff"></Search>
+            <Search color="#fff"></Search>
           </div>
         </div>
         <div className="language">
@@ -60,9 +60,9 @@ function Header() {
         </div>
 
         <div className="sellMenu">
-          <SellButton></SellButton>
+          <Link to='/create'><SellButton /></Link>
           <div className="sellMenuContent">
-            <SellButtonPlus></SellButtonPlus>
+            <SellButtonPlus />
             <span>SELL</span>
           </div>
         </div>
