@@ -11,13 +11,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import CreatePage from './Pages/Create';
 import ViewPost from './Pages/ViewPost';
 import Post from './store/postContext';
+import ProtectorRoute from './Components/ProtectorRoute';
 
 function App() {
   const { setUser } = useContext(AuthContext);
   useEffect(() => {
     onAuthStateChanged(auth, (currentuser) => {
       setUser(currentuser);
-      // console.log(user)
     })
   })
   return (
@@ -27,7 +27,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='signup' element={<SignupPage />} />
           <Route path='login' element={<LoginPage />} />
-          <Route path='create' element={<CreatePage />} />
+          <Route path='create' element={<ProtectorRoute><CreatePage /></ProtectorRoute>} />
           <Route path='view' element={<ViewPost />} />
         </Routes>
       </Post>

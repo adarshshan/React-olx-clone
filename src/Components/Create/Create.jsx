@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Create.css';
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import Header from '../Header/Header';
@@ -40,10 +40,10 @@ const Create = () => {
   }
 
   return (
-    <Fragment>
+    <>
       <Header />
       <card>
-        <div className="centerDiv">
+        <div className="centerDiv shadow">
           <form>
             <label htmlFor="fname">Name</label>
             <br />
@@ -92,7 +92,7 @@ const Create = () => {
           </form>
         </div>
       </card>
-    </Fragment>
+    </>
   );
 };
 

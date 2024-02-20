@@ -4,22 +4,21 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Logo from '../../olx-logo.png';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import { UserAuth } from '../../store/FirebaseContext';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { signIn } = UserAuth();
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const auth = getAuth();
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      if (userCredential) {
-        navigate('/');
-        alert('logined successfully')
-      }
+      signIn(email,password);
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
