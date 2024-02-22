@@ -7,7 +7,7 @@ import { db } from '../../Firebase/config';
 function View() {
   const [userDetails, setUserDetails] = useState('')
   const { details } = useContext(PostContext)
-  
+
   useEffect(() => {
     const { userId } = details;
     const Mycollection = collection(db, 'users');

@@ -3,6 +3,7 @@ import React from 'react';
 import './Banner.css';
 import Arrow from '../../assets/Arrow'
 function Banner() {
+  console.log('Banner rendered...')
   return (
     <div className="bannerParentDiv">
       <div className="bannerChildDiv">
@@ -32,5 +33,4 @@ function Banner() {
     </div>
   );
 }
-
 export default Banner;

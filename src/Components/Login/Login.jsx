@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import Logo from '../../olx-logo.png';
 import './Login.css';
@@ -17,7 +16,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      signIn(email,password);
+      signIn(email, password);
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -61,5 +60,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 
 import Heart from '../../assets/Heart';
 import './Post.css';
@@ -12,7 +12,7 @@ function Posts() {
   const { setDetails } = useContext(PostContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const Mycollection = collection(db, 'products');
     getDocs(Mycollection).then((querysnapShot) => {
       const allPost = querysnapShot.docs.map((doc) => ({
@@ -39,21 +39,15 @@ function Posts() {
                 <div key={product.id} onClick={() => {
                   setDetails(product);
                   navigate('/view');
-                }} className="card col-md-4 col-lg-4 m-3 p-2 ms-3">
-                  <div className="favorite">
+                }} className="card p-4 mb-3"
+                  style={{ width: '22rem', height: '20rem' }}>
+                  <img src={product.imageUrl} style={{ height: '150px' }} className="card-img-top" alt="..." />
+                  <div className='d-flex justify-content-between mt-3'>
+                    <p className='fs-5'>{product.name}</p>
                     <Heart />
                   </div>
-                  <div className="image">
-                    <img src={product.imageUrl} alt="" />
-                  </div>
-                  <div className="content">
-                    <p className="rate">&#x20B9; {product.price}</p>
-                    <span className="kilometer">{product.name}</span>
-                    <p className="name">{product.category}</p>
-                  </div>
-                  <div className="date">
-                    <span>{product.createdAt}</span>
-                  </div>
+                  <p>{product.category}</p>
+                  <p className="card-text fs-4">RS. {product.price}</p>
                 </div>
               )
             })
