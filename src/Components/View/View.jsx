@@ -24,7 +24,7 @@ function View() {
 
   return (
     <>
-      <div className="viewParentDiv">
+      <div className="viewParentDiv container pb-3">
         <div className="imageShowDiv">
           <img
             src={details.imageUrl}
@@ -48,4 +48,5 @@ function View() {
     </>
   );
 }
-export default View;
+const NewView = React.memo(View);
+export default NewView;

@@ -44,17 +44,19 @@ function Header() {
           </div>
         </div>
         <div className="language">
-          <span> ENGLISH </span>
-          <Arrow />
+          <div className="dropdown">
+            <button className="btn btn-white dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              ENGLISH <Arrow />
+            </button>
+            <ul className="dropdown-menu shadow" style={{cursor:'pointer'}} aria-labelledby="dropdownMenuButton1">
+              <li className="dropdown-item">Profile</li>
+              {user && <li onClick={logOut} className="dropdown-item" href="#">Logout</li>}
+            </ul>
+          </div>
         </div>
         <div className="loginPage">
-          {!user ? (<Link to='/login' style={{ textDecoration: 'none', color: 'black' }}><span>Login</span></Link>) :
-            (
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>{user.email}</span>
-                <span onClick={logOut} style={{ marginLeft: '8px', cursor: 'pointer' }}>Logout</span>
-              </div>
-            )}
+          {!user ? (<Link to='/login' style={{ color: 'black' }}><span>Login</span></Link>) :
+            (<span>{user.email}</span>)}
 
           <hr />
         </div>
